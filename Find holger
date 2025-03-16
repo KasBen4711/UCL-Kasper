@@ -1,0 +1,33 @@
+
+
+class FinderHolger
+{
+    static void Main()
+    {
+        // Definerer antal rækker og kolonner i gridet
+        const int rows = 40, cols = 40;
+        Random rand = new Random();
+
+        // Vælger en tilfældig position til '@'
+        int targetRow = rand.Next(rows);
+        int targetCol = rand.Next(cols);
+
+        // Gennemløber alle rækker
+        for (int i = 0; i < rows; i++)
+        {
+            // Gennemløber alle kolonner i hver række
+            for (int j = 0; j < cols; j++)
+            {
+                // Hvis det er den valgte position, indsæt '@', ellers et tilfældigt bogstav
+                Console.Write((i == targetRow && j == targetCol) ? "@ " : (char)rand.Next('A', 'Z' + 1) + " ");
+            }
+            Console.WriteLine(); // Gå til næste linje efter hver række
+        }
+
+        // Udskriver koordinaterne for '@'
+        Console.WriteLine($"\n@ er på række {targetRow + 1}, kolonne {targetCol + 1}");
+
+        // Venter på brugerinput, så konsollen ikke lukker med det samme
+        Console.ReadKey();
+    }
+}
